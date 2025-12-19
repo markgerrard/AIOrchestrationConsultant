@@ -144,7 +144,7 @@ When you want Gemini to take the lead on UI/UX planning, just say it naturally:
 
 - "ask gemini to plan the UI for this feature"
 - "have gemini handle the UX"
-- In plan mode: "gemini should handle UI"
+- In plan mode: "gemini should handle UI" or "gemini should handle UX"
 
 **What happens:**
 
