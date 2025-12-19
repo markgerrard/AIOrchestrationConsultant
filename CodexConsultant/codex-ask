@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MODEL="${CODEX_MODEL:-gpt-5.2}"
+
+# Allow stdin too (handy for diff/log blobs)
+if [ -t 0 ]; then
+  QUESTION="${*:-}"
+  [ -n "$QUESTION" ] || { echo "Usage: codex-ask <question>" >&2; exit 2; }
+  codex exec -m "$MODEL" "$QUESTION"
+else
+  QUESTION="${*:-}"
+  [ -n "$QUESTION" ] || { echo "Usage: cat blob | codex-ask <question>" >&2; exit 2; }
+  codex exec -m "$MODEL" "$QUESTION" < /dev/stdin
+fi
