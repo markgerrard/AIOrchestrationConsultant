@@ -138,6 +138,12 @@ When the user says "ask codex [question]" or wants a second opinion from another
 5. Wait for user approval before proceeding
 
 **Key rule:** Codex advises, Claude interprets, user decides.
+
+**Plan mode:** When in plan mode and ready to present a plan, automatically ask Codex to review it:
+```bash
+cat [plan-file] | codex-ask "Review this implementation plan. Check for missing steps, wrong order, architectural issues, or potential blockers."
+```
+Include Codex's feedback alongside the plan before asking for user approval.
 ```
 
 ## How It Works
