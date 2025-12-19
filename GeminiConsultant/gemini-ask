@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+MODEL="${GEMINI_MODEL:-gemini-3-pro}"
+
+# Allow stdin too (handy for HTML/CSS/component blobs)
+if [ -t 0 ]; then
+  QUESTION="${*:-}"
+  [ -n "$QUESTION" ] || { echo "Usage: gemini-ask <question>" >&2; exit 2; }
+  gemini -m "$MODEL" "$QUESTION"
+else
+  QUESTION="${*:-}"
+  [ -n "$QUESTION" ] || { echo "Usage: cat component.html | gemini-ask <question>" >&2; exit 2; }
+  gemini -m "$MODEL" "$QUESTION" < /dev/stdin
+fi
