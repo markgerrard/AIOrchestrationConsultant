@@ -30,12 +30,22 @@ CODEX_MODEL=gpt-5.2-codex codex-ask "Explain this error"
 
 ## Review Patterns
 
-Three practical ways to use "ask codex to review the changes":
+Three practical ways to use "ask codex to review the changes".
+
+Just tell Claude what you want in natural language:
+
+| You say | Claude runs |
+|---------|-------------|
+| "ask codex to review the changes" | `git diff \| codex-ask "..."` |
+| "ask codex about this approach" | `codex-ask "Context: ... Should we do X or Y?"` |
+| "get codex's opinion on this file" | `cat file.php \| codex-ask "..."` |
 
 ### 1. Quick Diff Review (most common)
 
-Pipe the diff straight into Codex:
+**You say:**
+> "ask codex to review the changes"
 
+**Claude runs:**
 ```bash
 git diff | codex-ask "Review these changes for correctness, edge cases, and unintended side effects. Bullet points only."
 ```
@@ -49,8 +59,10 @@ This replaces "open ChatGPT, paste diff, explain context".
 
 ### 2. Contextual Review Tied to Intent (better)
 
-Include the *why*, not just the diff:
+**You say:**
+> "ask codex to review these changes - we're implementing the backfill for extraction, check for race conditions"
 
+**Claude runs:**
 ```bash
 git diff | codex-ask "Context: implementing automated extraction backfill for calls using call_latest_ai_runs as source of truth. Review this diff for schema correctness, race conditions, and scaling issues."
 ```
@@ -59,8 +71,10 @@ This is where Codex shines: same model, but now it understands what the change i
 
 ### 3. Targeted File Review (when diff is noisy)
 
-If the diff is large or mixed:
+**You say:**
+> "ask codex to review CallAiRunService - focus on the idempotency and input_hash logic"
 
+**Claude runs:**
 ```bash
 cat app/Services/CallAiRunService.php | codex-ask "Review this file after recent changes. Focus on idempotency, input_hash usage, and backfill safety."
 ```
