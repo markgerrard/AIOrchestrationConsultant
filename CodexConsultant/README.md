@@ -95,6 +95,26 @@ Without context, Codex defaults to generic "best practice" commentary.
 - **Codex** = senior reviewer you tap on the shoulder
 - **You** = tech lead who decides what matters
 
+## Plan Mode Integration
+
+When Claude is in plan mode and finishes drafting an implementation plan, it will ask:
+
+> "Would you like me to have Codex review this plan before we proceed?"
+
+If you say yes, Claude runs:
+
+```bash
+cat [plan-file] | codex-ask "Review this implementation plan. Check for missing steps, wrong order, architectural issues, or potential blockers."
+```
+
+You get:
+1. Claude's implementation plan
+2. Codex's critique (gaps, ordering, blockers)
+3. Claude's interpretation of the feedback
+4. Your final approval
+
+This catches architectural mistakes before any code is written.
+
 ## Integrating with Claude Code
 
 Add the following to your global `~/.claude/CLAUDE.md` to enable any Claude session to consult Codex:
