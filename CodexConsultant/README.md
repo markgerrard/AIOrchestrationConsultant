@@ -1,14 +1,27 @@
 # CodexConsultant
 
-A lightweight CLI tool that allows Claude Code to consult OpenAI's Codex (GPT-5.2) for second opinions during coding sessions.
+A lightweight CLI helper that lets Claude Code consult OpenAI Codex (GPT-5.2) for second opinions during coding sessions.
+
+## What This Solves
+
+When Claude asks you a question or you want a second opinion, you can say:
+- "ask codex …"
+- "ask codex to review the changes"
+
+…and Claude will run Codex locally and return:
+- The exact question asked
+- Codex's answer (verbatim)
+- Claude's interpretation
+- Recommended next step
+- Then wait for your approval
 
 ## Installation
 
-1. Copy the script to your bin directory:
+1. Put the script on PATH:
    ```bash
-   mkdir -p ~/bin
-   cp codex-ask ~/bin/
-   chmod +x ~/bin/codex-ask
+   mkdir -p "$HOME/bin"
+   cp codex-ask "$HOME/bin/codex-ask"
+   chmod +x "$HOME/bin/codex-ask"
    ```
 
 2. Ensure `~/bin` is in your PATH:
