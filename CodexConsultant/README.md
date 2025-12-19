@@ -24,15 +24,62 @@ A lightweight CLI tool that allows Claude Code to consult OpenAI's Codex (GPT-5.
 # Direct question
 codex-ask "What are the tradeoffs between Redis and Memcached for session storage?"
 
-# Pipe code for review
-cat src/auth.py | codex-ask "Review this for security vulnerabilities"
-
-# Detailed review with specific focus areas
-cat app/Services/CallAiRunService.php | codex-ask "Review this file after recent changes. Focus on idempotency, input_hash usage, and backfill safety."
-
 # Use a different model (e.g., gpt-5.2-codex, gpt-5.1-codex-max)
 CODEX_MODEL=gpt-5.2-codex codex-ask "Explain this error"
 ```
+
+## Review Patterns
+
+Three practical ways to use "ask codex to review the changes":
+
+### 1. Quick Diff Review (most common)
+
+Pipe the diff straight into Codex:
+
+```bash
+git diff | codex-ask "Review these changes for correctness, edge cases, and unintended side effects. Bullet points only."
+```
+
+What you get:
+- Fast second opinion
+- Catches obvious mistakes
+- No ceremony
+
+This replaces "open ChatGPT, paste diff, explain context".
+
+### 2. Contextual Review Tied to Intent (better)
+
+Include the *why*, not just the diff:
+
+```bash
+git diff | codex-ask "Context: implementing automated extraction backfill for calls using call_latest_ai_runs as source of truth. Review this diff for schema correctness, race conditions, and scaling issues."
+```
+
+This is where Codex shines: same model, but now it understands what the change is trying to achieve.
+
+### 3. Targeted File Review (when diff is noisy)
+
+If the diff is large or mixed:
+
+```bash
+cat app/Services/CallAiRunService.php | codex-ask "Review this file after recent changes. Focus on idempotency, input_hash usage, and backfill safety."
+```
+
+Avoids Codex getting distracted by unrelated hunks.
+
+## Quality Tips
+
+Always include at least one of:
+- **The goal** — what this change is for
+- **The risk** — what would be bad if this is wrong
+
+Without context, Codex defaults to generic "best practice" commentary.
+
+## Mental Model
+
+- **Claude (Opus)** = engineer who just wrote the code
+- **Codex** = senior reviewer you tap on the shoulder
+- **You** = tech lead who decides what matters
 
 ## Integrating with Claude Code
 
