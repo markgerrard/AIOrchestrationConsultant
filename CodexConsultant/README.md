@@ -27,8 +27,8 @@ codex-ask "What are the tradeoffs between Redis and Memcached for session storag
 # Pipe code for review
 cat src/auth.py | codex-ask "Review this for security vulnerabilities"
 
-# Use a different model
-CODEX_MODEL=gpt-4o codex-ask "Explain this error"
+# Use a different model (e.g., gpt-5.2-codex, gpt-5.1-codex-max)
+CODEX_MODEL=gpt-5.2-codex codex-ask "Explain this error"
 ```
 
 ## Integrating with Claude Code
