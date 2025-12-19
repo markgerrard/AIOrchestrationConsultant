@@ -118,6 +118,26 @@ You want: "A designer walking in cold and reacting honestly."
 
 Not: "A designer defending their previous opinions."
 
+## Plan Mode Integration
+
+When Claude is in plan mode with UI/UX changes and finishes drafting a plan, it will ask:
+
+> "Would you like me to have Gemini review the UI/UX aspects of this plan?"
+
+If you say yes, Claude runs:
+
+```bash
+cat [plan-file] | gemini-ask "Review the UI/UX aspects of this plan. Check for missing user flows, accessibility concerns, confusing interactions, or UX anti-patterns."
+```
+
+You get:
+1. Claude's implementation plan
+2. Gemini's UX critique (flows, accessibility, interactions)
+3. Claude's interpretation of the feedback
+4. Your final approval
+
+This catches UX issues before any code is written.
+
 ## Caution
 
 Gemini is persuasive. It will confidently suggest "improvements" that are:
