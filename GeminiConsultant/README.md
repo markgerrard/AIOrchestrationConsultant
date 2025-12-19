@@ -138,6 +138,47 @@ You get:
 
 This catches UX issues before any code is written.
 
+## UI Plan Mode (Gemini-Led Planning)
+
+When you want Gemini to take the lead on UI/UX planning, say:
+
+> "UI PLAN: [feature description]"
+
+**What happens:**
+
+1. Claude gathers relevant UI artefacts (components, routes, copy)
+2. Gemini generates a structured UI plan:
+   - User goals (3 bullets max)
+   - Primary flow (numbered steps)
+   - Alternate/error flows
+   - Screens/components needed
+   - Copy changes (exact strings)
+   - Accessibility checklist
+   - Open questions / assumptions
+
+3. Claude enforces constraints:
+   - Removes out-of-scope items
+   - Adds implementation notes
+   - Highlights assumptions
+   - Writes to `PLAN_UI.md`
+
+4. You approve before implementation
+
+**Why this structure:**
+
+If Gemini runs fully unconstrained, you get:
+- Nice-looking flows
+- Lots of subjective polish suggestions
+- Occasional missed technical constraints
+- Scope creep
+
+With Claude as the gate:
+- Gemini proposes the UX content
+- Claude enforces constraints and makes it executable
+- You approve
+
+**Key rule:** Gemini proposes. Claude gates. User decides.
+
 ## Caution
 
 Gemini is persuasive. It will confidently suggest "improvements" that are:
