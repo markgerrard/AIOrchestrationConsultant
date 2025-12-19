@@ -140,11 +140,13 @@ This catches UX issues before any code is written.
 
 ## Gemini-Led UI Planning
 
-When you want Gemini to take the lead on UI/UX planning, just say it naturally:
+When you want Gemini to take the lead on UI/UX planning, just say it however feels natural:
 
-- "ask gemini to plan the UI for this feature"
-- "have gemini handle the UX"
-- In plan mode: "gemini should handle UI" or "gemini should handle UX"
+- "gemini ui"
+- "gemini to do ui"
+- "ask gemini to plan the UI"
+- "gemini should handle UX"
+- Any variation works — Claude understands intent, or asks for clarification if unclear
 
 **What happens:**
 
