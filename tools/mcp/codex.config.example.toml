@@ -1,0 +1,8 @@
+# Add this to ~/.codex/config.toml
+# Adjust paths to match your installation
+
+[mcp_servers.opus]
+command = "bash"
+args = ["-lc", "source /ABSOLUTE/PATH/TO/venv/bin/activate && python3 /ABSOLUTE/PATH/TO/opus_server.py"]
+startup_timeout_sec = 20
+tool_timeout_sec = 1800
