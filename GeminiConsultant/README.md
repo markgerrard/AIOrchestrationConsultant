@@ -138,11 +138,13 @@ You get:
 
 This catches UX issues before any code is written.
 
-## UI Plan Mode (Gemini-Led Planning)
+## Gemini-Led UI Planning
 
-When you want Gemini to take the lead on UI/UX planning, say:
+When you want Gemini to take the lead on UI/UX planning, just say it naturally:
 
-> "UI PLAN: [feature description]"
+- "ask gemini to plan the UI for this feature"
+- "have gemini handle the UX"
+- In plan mode: "gemini should handle UI/UX"
 
 **What happens:**
 
