@@ -6,11 +6,12 @@ A lightweight CLI tool that allows Claude Code to consult OpenAI's Codex (GPT-5.
 
 1. Copy the script to your bin directory:
    ```bash
-   cp codex-ask /home/forge/bin/
-   chmod +x /home/forge/bin/codex-ask
+   mkdir -p ~/bin
+   cp codex-ask ~/bin/
+   chmod +x ~/bin/codex-ask
    ```
 
-2. Ensure `/home/forge/bin` is in your PATH:
+2. Ensure `~/bin` is in your PATH:
    ```bash
    echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
    source ~/.bashrc
@@ -124,7 +125,7 @@ Add the following to your global `~/.claude/CLAUDE.md` to enable any Claude sess
 
 When the user says "ask codex [question]" or wants a second opinion from another AI:
 
-**Command:** `/home/forge/bin/codex-ask`
+**Command:** `~/bin/codex-ask`
 
 **Common patterns:**
 
