@@ -106,24 +106,36 @@ When the user says "ask codex [question]" or wants a second opinion from another
 
 **Command:** `/home/forge/bin/codex-ask`
 
+**Common patterns:**
+
+| User says | You run |
+|-----------|---------|
+| "ask codex to review the changes" | `git diff \| codex-ask "Review for correctness, edge cases, side effects..."` |
+| "ask codex to review [file]" | `cat [file] \| codex-ask "Review this for [concern]..."` |
+| "ask codex about [approach]" | `codex-ask "Context: [what we're doing]. Should we do X or Y? Tradeoffs?"` |
+
 **How to use it properly:**
 1. Always provide context - vague questions get wrong-for-the-situation answers
-2. Either include context in the question, or pipe relevant code:
+2. Include the user's stated goal or risk in your prompt to Codex
+3. Either include context in the question, or pipe relevant code:
    ```bash
-   # With inline context
-   codex-ask "We need X for purpose Y. Should we do A or B? Tradeoffs?"
+   # Review recent changes
+   git diff | codex-ask "Context: [what the change is for]. Review for correctness, edge cases, and unintended side effects."
 
-   # With piped code
+   # Review specific file
    cat app/Services/SomeService.php | codex-ask "Review this for [specific concern]"
+
+   # Architecture question
+   codex-ask "We need X for purpose Y. Should we do A or B? Tradeoffs?"
    ```
 
-3. After getting Codex's answer, return to the user with:
+4. After getting Codex's answer, return to the user with:
    - **Question asked** (what you sent to Codex)
    - **Codex's answer** (verbatim)
    - **My interpretation** (agree/disagree, why, context Codex may have missed)
    - **Recommended action**
 
-4. Wait for user approval before proceeding
+5. Wait for user approval before proceeding
 
 **Key rule:** Codex advises, Claude interprets, user decides.
 ```
