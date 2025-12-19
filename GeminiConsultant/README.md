@@ -1,6 +1,6 @@
 # GeminiConsultant
 
-A lightweight CLI helper that lets Claude Code consult Google Gemini 3 Pro for UI/UX second opinions during coding sessions.
+A lightweight CLI helper that lets Claude Code consult Google Gemini for UI/UX second opinions during coding sessions.
 
 ## What This Solves
 
@@ -62,8 +62,8 @@ gemini-ask "Does this login flow have too many steps?"
 # Pipe HTML/component for review
 cat resources/views/checkout.blade.php | gemini-ask "Review this checkout form for UX issues and accessibility"
 
-# Use a different model
-GEMINI_MODEL=gemini-3-flash gemini-ask "Quick check: is this button label clear?"
+# Use a different model (optional)
+GEMINI_MODEL=gemini-2.0-flash gemini-ask "Quick check: is this button label clear?"
 ```
 
 ## Review Patterns

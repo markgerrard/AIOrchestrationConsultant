@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-MODEL="${GEMINI_MODEL:-gemini-3-pro}"
+# Optional model override (default: gemini's default model)
+MODEL_FLAG=""
+if [ -n "${GEMINI_MODEL:-}" ]; then
+  MODEL_FLAG="-m $GEMINI_MODEL"
+fi
 
 # Allow stdin too (handy for HTML/CSS/component blobs)
 if [ -t 0 ]; then
   QUESTION="${*:-}"
   [ -n "$QUESTION" ] || { echo "Usage: gemini-ask <question>" >&2; exit 2; }
-  gemini -m "$MODEL" "$QUESTION"
+  gemini $MODEL_FLAG "$QUESTION" 2>/dev/null
 else
   QUESTION="${*:-}"
   [ -n "$QUESTION" ] || { echo "Usage: cat component.html | gemini-ask <question>" >&2; exit 2; }
-  gemini -m "$MODEL" "$QUESTION" < /dev/stdin
+  gemini $MODEL_FLAG "$QUESTION" < /dev/stdin 2>/dev/null
 fi

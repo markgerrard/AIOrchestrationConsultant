@@ -15,7 +15,7 @@ Tools for orchestrating collaboration between Claude, OpenAI Codex, and Google G
 | Consultant | Strengths |
 |------------|-----------|
 | **Codex** (GPT-5.2) | Backend, data models, architecture, correctness, concurrency, performance |
-| **Gemini** (3 Pro) | UI/UX, flows, wording, affordances, accessibility, form layout |
+| **Gemini** | UI/UX, flows, wording, affordances, accessibility, form layout |
 
 ## Tools
 
